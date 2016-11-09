@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.example.duska.food.HomeActivity"
+    android:background="@drawable/food44"
+    android:focusableInTouchMode="false">
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:drawableTop="@drawable/ic_help"
+        android:id="@+id/btn_help"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="#ac007f7b" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:drawableTop="@drawable/ic_add"
+        android:id="@+id/btn_addNew"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_button" />
+
+    <Button
+        android:layout_width="110dp"
+        android:layout_height="45dp"
+        android:id="@+id/btn_recipe"
+        android:background="@color/color_button"
+        android:drawableTop="@drawable/ic_recipe"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Что приготовим сегодня?"
+        android:id="@+id/textView"
+        android:layout_marginTop="67dp"
+        android:background="@color/color_button"
+        android:textColor="#ffffff"
+        android:textSize="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/btn_recipe" />
+</RelativeLayout>

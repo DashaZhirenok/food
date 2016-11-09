@@ -5,11 +5,11 @@
     <group>
 
         <item
-            android:id="@+id/menu_recipe"
+            android:id="@+id/menu_add"
             app:showAsAction="ifRoom"
-            android:icon="@drawable/ic_recipe"
-            android:title="@string/menu_recipe">
-         </item>
+            android:icon="@drawable/ic_menu_add"
+            android:title="@string/menu_add">
+        </item>
         <item
             android:id="@+id/menu_home"
             app:showAsAction="ifRoom"

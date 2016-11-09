@@ -2,26 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <group>
 
+    <group>
+        <item
+            android:id="@+id/menu_add"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_menu_add"
+            android:title="@string/menu_add">
+        </item>
         <item
             android:id="@+id/menu_recipe"
             app:showAsAction="ifRoom"
             android:icon="@drawable/ic_recipe"
             android:title="@string/menu_recipe">
-         </item>
+        </item>
         <item
             android:id="@+id/menu_home"
             app:showAsAction="ifRoom"
             android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home">
         </item>
-        <item
-            android:id="@+id/help"
-            app:showAsAction="ifRoom"
-            android:icon="@drawable/ic_help"
-            android:title="@string/help">
-        </item>
     </group>
-
 </menu>

@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -63,28 +62,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (id)
         {
-            case R.id.menu_main:
-                Intent gotomain = new Intent();
-                gotomain.setClass(MainActivity.this, MainActivity.class);
-                startActivity(gotomain);
-                break;
-
             case R.id.menu_recipe:
                 Intent gotorecipe = new Intent();
                 gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
                 startActivity(gotorecipe);
                 break;
-
-            case R.id.menu_about:
-                Toast.makeText(MainActivity.this, ":)", Toast.LENGTH_LONG).show();
-                break;
-
-            case R.id.menu_author:
-                Toast.makeText(MainActivity.this, "Author: Dasha Zhirenok", Toast.LENGTH_LONG).show();
+            case R.id.menu_home:
+                Intent gotohome = new Intent();
+                gotohome.setClass(MainActivity.this, HomeActivity.class);
+                startActivity(gotohome);
                 break;
 
             case R.id.help:
-                Toast.makeText(MainActivity.this, "HELP", Toast.LENGTH_LONG).show();
+                Intent gotohelp = new Intent();
+                gotohelp.setClass(MainActivity.this, HelpActivity.class);
+                startActivity(gotohelp);
                 break;
         }
 

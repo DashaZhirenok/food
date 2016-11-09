@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class RecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -43,7 +42,7 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu_recipe, menu);
         return true;
     };
 
@@ -54,31 +53,22 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
         switch (id)
         {
-            case R.id.menu_recipe:
-                Intent gotorecipe = new Intent();
-                gotorecipe.setClass(RecipeActivity.this, RecipeActivity.class);
-                startActivity(gotorecipe);
+            case R.id.menu_add:
+                Intent gotoadd = new Intent();
+                gotoadd.setClass(RecipeActivity.this, MainActivity.class);
+                startActivity(gotoadd);
                 break;
-
-            case R.id.menu_main:
-                Intent gotomain = new Intent();
-                gotomain.setClass(RecipeActivity.this, MainActivity.class);
-                startActivity(gotomain);
-                break;
-
-            case R.id.menu_about:
-                Toast.makeText(RecipeActivity.this, ":)", Toast.LENGTH_LONG).show();
-                break;
-
-            case R.id.menu_author:
-                Toast.makeText(RecipeActivity.this, "Author: Dasha Zhirenok", Toast.LENGTH_LONG).show();
+            case R.id.menu_home:
+                Intent gotohome = new Intent();
+                gotohome.setClass(RecipeActivity.this, HomeActivity.class);
+                startActivity(gotohome);
                 break;
 
             case R.id.help:
-                Toast.makeText(RecipeActivity.this, "HELP", Toast.LENGTH_LONG).show();
+                Intent gotohelp = new Intent();
+                gotohelp.setClass(RecipeActivity.this, HelpActivity.class);
+                startActivity(gotohelp);
                 break;
-
-
         }
 
 
