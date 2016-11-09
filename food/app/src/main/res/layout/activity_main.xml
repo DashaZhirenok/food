@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <!-- первая таблица -->
+
+    <EditText
+        android:id="@+id/etNameofdish"
+        android:hint="Name of dish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <!-- вторая таблица -->
+
+    <EditText
+        android:id="@+id/etIngredients1"
+        android:hint="ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/etIngredients2"
+        android:hint="ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/etIngredients3"
+        android:hint="ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/etIngredients4"
+        android:hint="Ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <EditText
+        android:id="@+id/etIngredients5"
+        android:hint="Ingredients"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <!-- первая таблица -->
+    <EditText
+        android:id="@+id/etMealtime"
+        android:hint="Mealtime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </EditText>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:layout_alignParentBottom="true"
+            android:layout_toStartOf="@+id/btnRead">
+        </Button>
+        <Button
+            android:id="@+id/btnRead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Read"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+        </Button>
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/btnRead">
+        </Button>
+
+    </RelativeLayout>
+</LinearLayout>
