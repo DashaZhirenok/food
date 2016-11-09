@@ -4,19 +4,31 @@
 
     <group>
         <item
-        android:id="@+id/menu_recipe"
-        app:showAsAction="never"
-        android:title="@string/menu_recipe">
-         </item>
-         <item
-        android:id="@+id/menu_about"
-        app:showAsAction="never"
-        android:title="@string/menu_about">
+            android:id="@+id/help"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_help"
+            android:title="@string/help">
+        </item>
+
+        <item
+            android:id="@+id/menu_main"
+            app:showAsAction="never"
+            android:title="@string/menu_main">
         </item>
         <item
-        android:id="@+id/menu_author"
-        app:showAsAction="never"
-        android:title="@string/menu_author">
+            android:id="@+id/menu_recipe"
+            app:showAsAction="never"
+            android:title="@string/menu_recipe">
+         </item>
+         <item
+            android:id="@+id/menu_about"
+            app:showAsAction="never"
+            android:title="@string/menu_about">
+        </item>
+        <item
+            android:id="@+id/menu_author"
+            app:showAsAction="never"
+            android:title="@string/menu_author">
         </item>
     </group>
 

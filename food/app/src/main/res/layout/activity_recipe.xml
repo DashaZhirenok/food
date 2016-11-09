@@ -9,31 +9,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recipe"
+        android:text="Recipes"
         android:id="@+id/textView"
         android:textSize="36dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Name of dish"
-        android:id="@+id/name_of_dish"
-        android:background="#42aaff"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:textSize="24dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="text of recipe..."
-        android:id="@+id/text_of_recipe"
-        android:background="#75c1ff"
-        android:layout_below="@+id/name_of_dish"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -41,8 +20,7 @@
         android:layout_height="wrap_content"
         android:text="Add"
         android:id="@+id/btnAdd"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/name_of_dish" />
+        android:layout_alignParentBottom="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -59,4 +37,28 @@
         android:id="@+id/btnClear"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/btnRead" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="230dp"
+        android:id="@+id/text_of_recipe"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="#000fff"
+        android:text="Text of recipe..."
+        android:textSize="24dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/name_of_dish"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:background="#000aaa"
+        android:layout_above="@+id/text_of_recipe"
+        android:text="Name of dish"
+        android:textSize="36dp" />
+
 </RelativeLayout>

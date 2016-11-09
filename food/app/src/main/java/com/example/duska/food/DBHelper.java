@@ -46,8 +46,8 @@ public class DBHelper  extends SQLiteOpenHelper{
         db.execSQL("create table " + TABLE_LISTOFPRODUCTS + "(" + KEY_ID2
                 + " integer primary key," + KEY_INGREDIENT + " text," + KEY_NUMBEROFDISH + " text" + ")"); //CREATE THE FIRST TABLE
 
-        db.execSQL("create table " + TABLE_LISTOFPRODUCTS + "(" + KEY_ID2
-                + " integer primary key," + KEY_NUMBEROFRECIPE + " text," + KEY_RECIPE + " text" + ")"); //CREATE THE FIRST TABLE
+        db.execSQL("create table " + TABLE_RECIPES + "(" + KEY_ID3
+                + " integer primary key," + KEY_NAMEOFDISHINRECIPE + " text," + KEY_RECIPE + " text" + ")"); //CREATE THE FIRST TABLE
 
     }
 

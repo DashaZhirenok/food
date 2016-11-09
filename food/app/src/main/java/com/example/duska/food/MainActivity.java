@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnClear.setOnClickListener(this);
 
 
-
         etNameofdish = (EditText) findViewById(R.id.etNameofdish);
         etMealtime = (EditText) findViewById(R.id.etMealtime);
         etIngredients1 =(EditText) findViewById(R.id.etIngredients1);
@@ -64,6 +63,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (id)
         {
+            case R.id.menu_main:
+                Intent gotomain = new Intent();
+                gotomain.setClass(MainActivity.this, MainActivity.class);
+                startActivity(gotomain);
+                break;
+
             case R.id.menu_recipe:
                 Intent gotorecipe = new Intent();
                 gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
@@ -76,6 +81,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.menu_author:
                 Toast.makeText(MainActivity.this, "Author: Dasha Zhirenok", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.help:
+                Toast.makeText(MainActivity.this, "HELP", Toast.LENGTH_LONG).show();
                 break;
         }
 
@@ -164,6 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnClear:
                 database.delete(DBHelper.TABLE_MENU, null, null);
                 database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
+                database.delete(DBHelper.TABLE_RECIPES, null, null);
                 break;
 
 
