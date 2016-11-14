@@ -31,9 +31,9 @@
     <Button
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:id="@+id/btn_recipe"
+        android:id="@+id/btn_show"
         android:background="@color/color_button"
-        android:drawableTop="@drawable/ic_recipe"
+        android:drawableTop="@drawable/ic_show"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
@@ -48,5 +48,5 @@
         android:textColor="#ffffff"
         android:textSize="55dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btn_recipe" />
+        android:layout_alignStart="@+id/btn_show" />
 </RelativeLayout>

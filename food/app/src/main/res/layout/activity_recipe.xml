@@ -35,7 +35,7 @@
     <Button
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:drawableTop="@drawable/ic_recipe"
+        android:drawableTop="@drawable/ic_show"
         android:id="@+id/btnRead"
         android:background="@color/color_button"
         android:layout_alignTop="@+id/btnAdd"
@@ -52,16 +52,15 @@
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="300dp"
+        android:layout_height="260dp"
         android:id="@+id/text_of_recipe"
         android:background="#c3005e5b"
         android:text="Text of recipe..."
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textColor="#ffffff"
-        android:layout_above="@+id/btnAdd"
-        android:layout_alignStart="@+id/name_of_dish"
-        android:layout_marginBottom="27dp"
-        android:layout_alignEnd="@+id/name_of_dish" />
+        android:layout_below="@+id/name_of_dish"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -71,9 +70,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:background="@color/color_button"
-        android:layout_above="@+id/text_of_recipe"
-        android:text="Name of dish"
-        android:textSize="36dp"
+        android:text="Please, type &quot;Name of dish&quot;"
+        android:textSize="26dp"
         android:textColor="#ffffff" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gotomain"
+        android:id="@+id/btnMain"
+        android:layout_below="@+id/text_of_recipe"
+        android:layout_alignEnd="@+id/btnClear" />
 
 </RelativeLayout>

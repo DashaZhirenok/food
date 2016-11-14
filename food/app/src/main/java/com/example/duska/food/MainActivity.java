@@ -15,7 +15,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnAdd, btnRead, btnClear;
+    Button btnAdd, btnRead, btnClear, btnDelete, btnRecipe;
     EditText etNameofdish, etMealtime, etIngredients1, etIngredients2, etIngredients3, etIngredients4, etIngredients5;
 
     DBHelper dbHelper;
@@ -28,11 +28,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
 
+        btnRecipe = (Button) findViewById(R.id.btnRecipe);
+        btnRecipe.setOnClickListener(this);
+
         btnRead = (Button) findViewById(R.id.btnRead);
         btnRead.setOnClickListener(this);
 
-        btnClear = (Button) findViewById(R.id.btnClear);
+        btnClear = (Button) findViewById(R.id.btnClear); //clear ALL!!
         btnClear.setOnClickListener(this);
+
+        btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnDelete.setOnClickListener(this);
 
 
         etNameofdish = (EditText) findViewById(R.id.etNameofdish);
@@ -62,10 +68,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (id)
         {
-            case R.id.menu_recipe:
-                Intent gotorecipe = new Intent();
-                gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
-                startActivity(gotorecipe);
+            case R.id.menu_show:
+                Intent gotoshow = new Intent();
+                gotoshow.setClass(MainActivity.this, ShowActivity.class);
+                startActivity(gotoshow);
                 break;
             case R.id.menu_home:
                 Intent gotohome = new Intent();
@@ -104,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (v.getId()) {
 
-            case R.id.btnAdd:
+            case R.id.btnAdd: //добавление данных в таблицу
                 contentValues.put(DBHelper.KEY_NAMEOFDISH, nameofdish);
                 contentValues.put(DBHelper.KEY_MEALTIME, mealtime);
                 contentValues2.put(DBHelper.KEY_NUMBEROFDISH, nameofdish);
@@ -126,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
-            case R.id.btnRead:
+            case R.id.btnRead: //чтение данных в log
                 Cursor cursor = database.query(DBHelper.TABLE_MENU, null, null, null, null, null, null);
                 Cursor cursor2 = database.query(DBHelper.TABLE_LISTOFPRODUCTS, null, null, null, null, null, null);
 
@@ -140,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 ", mealtime = " + cursor.getString(mealtimeIndex));
                     } while (cursor.moveToNext());
                 } else
-                    Log.d("mLog","0 rows");
+                    Log.d("mLog", "0 rows");
 
                 cursor.close();
 
@@ -150,24 +156,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     int numberofdishIndex = cursor2.getColumnIndex(DBHelper.KEY_NUMBEROFDISH);
                     do {
                         Log.d(
-                                "mLog","-------------------2--------------" +
-                                "ID = " + cursor2.getInt(idIndex2) +
-                                ", ingredients = " + cursor2.getString(ingredient1Index)
-                               + ", number of dish = " + cursor2.getString(numberofdishIndex));
+                                "mLog", "-------------------2--------------" +
+                                        "ID = " + cursor2.getInt(idIndex2) +
+                                        ", ingredients = " + cursor2.getString(ingredient1Index)
+                                        + ", number of dish = " + cursor2.getString(numberofdishIndex));
                     } while (cursor2.moveToNext());
                 } else
-                    Log.d("mLog","0 rows");
+                    Log.d("mLog", "0 rows");
 
                 cursor2.close();
 
                 break;
 
-            case R.id.btnClear:
-                database.delete(DBHelper.TABLE_MENU, null, null);
-                database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
-                database.delete(DBHelper.TABLE_RECIPES, null, null);
+
+            case R.id.btnDelete: // удаление какого-то конкретного блюда
+                if (nameofdish.equalsIgnoreCase("")) {
+                    break;
+                }
+                int updCount = database.delete(DBHelper.TABLE_MENU, DBHelper.KEY_NAMEOFDISH + " = ? ", new String[]{nameofdish});
+                int updCount2 = database.delete(DBHelper.TABLE_LISTOFPRODUCTS, DBHelper.KEY_NUMBEROFDISH + " = ?", new String[]{nameofdish});
+                Log.d("mLog", "deleted rows count = " + updCount);
+                Log.d("mLog", "deleted rows count = " + updCount2);
+
+            case R.id.btnRecipe: //переход в заполнение рецептов
+                Intent gotorecipe = new Intent();
+                gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
+                startActivity(gotorecipe);
+
                 break;
 
+            case R.id.btnClear: //полное удаление данных из таблицы
+                database.delete(DBHelper.TABLE_MENU, null, null);
+                database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
+                //database.delete(DBHelper.TABLE_RECIPES, null, null);
+                break;
 
         }
         dbHelper.close();

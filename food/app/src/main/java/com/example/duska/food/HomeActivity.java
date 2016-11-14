@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class HomeActivity extends AppCompatActivity {
 
     TextView textView;
-    Button btn_help, btn_recipe, btn_addNew;
+    Button btn_help, btn_show, btn_addNew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +19,10 @@ public class HomeActivity extends AppCompatActivity {
 
         btn_help = (Button) findViewById(R.id.btn_help);
         btn_addNew = (Button) findViewById(R.id.btn_addNew);
-        btn_recipe = (Button) findViewById(R.id.btn_recipe);
+        btn_show = (Button) findViewById(R.id.btn_show);
 
         btn_addNew.setOnClickListener(OncAll);
-        btn_recipe.setOnClickListener(OncAll);
+        btn_show.setOnClickListener(OncAll);
         btn_help.setOnClickListener(OncAll);
 
     }
@@ -32,10 +32,10 @@ public class HomeActivity extends AppCompatActivity {
         public void onClick(View v) {
 
             switch (v.getId()){
-                case (R.id.btn_recipe):
-                    Intent gotorecipe = new Intent();
-                    gotorecipe.setClass(HomeActivity.this, RecipeActivity.class);
-                    startActivity(gotorecipe);
+                case (R.id.btn_show):
+                    Intent gotoshow = new Intent();
+                    gotoshow.setClass(HomeActivity.this, ShowActivity.class);
+                    startActivity(gotoshow);
                 break;
 
                 case (R.id.btn_help):

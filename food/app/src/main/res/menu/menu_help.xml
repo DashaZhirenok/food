@@ -11,10 +11,10 @@
             android:title="@string/menu_add">
         </item>
         <item
-            android:id="@+id/menu_recipe"
+            android:id="@+id/menu_show"
             app:showAsAction="ifRoom"
-            android:icon="@drawable/ic_recipe"
-            android:title="@string/menu_recipe">
+            android:icon="@drawable/ic_show"
+            android:title="@string/menu_show">
         </item>
         <item
             android:id="@+id/menu_home"

@@ -39,10 +39,10 @@ public class HelpActivity extends AppCompatActivity {
                 startActivity(gotohome);
                 break;
 
-            case R.id.menu_recipe:
-                Intent gotorecipe = new Intent();
-                gotorecipe.setClass(HelpActivity.this, RecipeActivity.class);
-                startActivity(gotorecipe);
+            case R.id.menu_show:
+                Intent gotoshow = new Intent();
+                gotoshow.setClass(HelpActivity.this, ShowActivity.class);
+                startActivity(gotoshow);
                 break;
 
         }

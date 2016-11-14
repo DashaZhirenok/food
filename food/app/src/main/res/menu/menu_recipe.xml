@@ -4,11 +4,12 @@
 
     <group>
 
+
         <item
-            android:id="@+id/menu_add"
+            android:id="@+id/menu_show"
             app:showAsAction="ifRoom"
-            android:icon="@drawable/ic_menu_add"
-            android:title="@string/menu_add">
+            android:icon="@drawable/ic_show"
+            android:title="@string/menu_show">
         </item>
         <item
             android:id="@+id/menu_home"

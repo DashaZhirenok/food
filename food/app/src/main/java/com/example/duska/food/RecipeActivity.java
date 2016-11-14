@@ -15,7 +15,7 @@ import android.widget.TextView;
 
 public class RecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnRead, btnClear, btnAdd;
+    Button btnRead, btnClear, btnAdd, btnMain;
     TextView textView, text_of_recipe, name_of_dish;
     DBHelper dbHelper;
 
@@ -27,10 +27,12 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         btnRead = (Button) findViewById(R.id.btnRead);
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnClear = (Button) findViewById(R.id.btnClear);
+        btnMain = (Button) findViewById(R.id.btnMain);
 
         btnAdd.setOnClickListener(this);
         btnClear.setOnClickListener(this);
         btnRead.setOnClickListener(this);
+        btnMain.setOnClickListener(this);
 
         text_of_recipe = (TextView) findViewById(R.id.text_of_recipe);
         textView = (TextView) findViewById(R.id.textView);
@@ -46,17 +48,16 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         return true;
     };
 
-    @Override //действия при нажатии на пункты меню
-
+    @Override //действия при нажатии на пункты меню (верхний toolbar)
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
 
         switch (id)
         {
-            case R.id.menu_add:
-                Intent gotoadd = new Intent();
-                gotoadd.setClass(RecipeActivity.this, MainActivity.class);
-                startActivity(gotoadd);
+            case R.id.menu_show:
+                Intent gotoshow = new Intent();
+                gotoshow.setClass(RecipeActivity.this, ShowActivity.class);
+                startActivity(gotoshow);
                 break;
             case R.id.menu_home:
                 Intent gotohome = new Intent();
@@ -87,10 +88,9 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
         ContentValues contentValues = new ContentValues();
 
 
-
         switch (v.getId()) {
 
-            case R.id.btnAdd:
+            case R.id.btnAdd: //добавление данных в таблицу RECIPE
                 contentValues.put(DBHelper.KEY_NAMEOFDISHINRECIPE, nameofdishinrecipe);
                 contentValues.put(DBHelper.KEY_RECIPE, recipe);
 
@@ -98,7 +98,7 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
                 break;
 
-            case R.id.btnRead:
+            case R.id.btnRead: //чтение данных в log
                 Cursor cursor = database.query(DBHelper.TABLE_RECIPES, null, null, null, null, null, null);
 
                 if (cursor.moveToFirst()) {
@@ -117,11 +117,16 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
                 break;
 
-            case R.id.btnClear:
-                database.delete(DBHelper.TABLE_MENU, null, null);
-                database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
+            case R.id.btnClear: //удаление данных из всей таблицы
+               // database.delete(DBHelper.TABLE_MENU, null, null);
+               // database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
                 database.delete(DBHelper.TABLE_RECIPES, null, null);
                 break;
+
+            case R.id.btnMain: //кнопка перехода в главную забивку таблицы
+                Intent gotomain = new Intent();
+                gotomain.setClass(RecipeActivity.this, MainActivity.class);
+                startActivity(gotomain);
 
 
         }
