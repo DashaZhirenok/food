@@ -2,7 +2,6 @@ package com.example.duska.food;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -16,8 +15,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     Button btnAdd, btnRead, btnClear, btnDelete, btnRecipe;
-    EditText etNameofdish, etMealtime, etIngredients1, etIngredients2, etIngredients3, etIngredients4, etIngredients5;
-
+    EditText etNameofdish, etMealtime, etCategory, etIngredients1, etIngredients2, etIngredients3, etIngredients4, etIngredients5;
     DBHelper dbHelper;
 
     @Override
@@ -30,12 +28,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         btnRecipe = (Button) findViewById(R.id.btnRecipe);
         btnRecipe.setOnClickListener(this);
-
-        btnRead = (Button) findViewById(R.id.btnRead);
-        btnRead.setOnClickListener(this);
-
-        btnClear = (Button) findViewById(R.id.btnClear); //clear ALL!!
-        btnClear.setOnClickListener(this);
 
         btnDelete = (Button) findViewById(R.id.btnDelete);
         btnDelete.setOnClickListener(this);
@@ -94,13 +86,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+  //      String category = etCategory.getText().toString();
         String nameofdish = etNameofdish.getText().toString();
+        String mealtime = etMealtime.getText().toString();
         String ingredients1 = etIngredients1.getText().toString();
         String ingredients2 = etIngredients2.getText().toString();
         String ingredients3 = etIngredients3.getText().toString();
         String ingredients4 = etIngredients4.getText().toString();
         String ingredients5 = etIngredients5.getText().toString();
-        String mealtime = etMealtime.getText().toString();
 
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
@@ -113,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnAdd: //добавление данных в таблицу
                 contentValues.put(DBHelper.KEY_NAMEOFDISH, nameofdish);
                 contentValues.put(DBHelper.KEY_MEALTIME, mealtime);
+        //        contentValues.put(DBHelper.KEY_CATEGORY, category);
                 contentValues2.put(DBHelper.KEY_NUMBEROFDISH, nameofdish);
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients1);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
@@ -132,42 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
-            case R.id.btnRead: //чтение данных в log
-                Cursor cursor = database.query(DBHelper.TABLE_MENU, null, null, null, null, null, null);
-                Cursor cursor2 = database.query(DBHelper.TABLE_LISTOFPRODUCTS, null, null, null, null, null, null);
-
-                if (cursor.moveToFirst()) {
-                    int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-                    int nameofdishIndex = cursor.getColumnIndex(DBHelper.KEY_NAMEOFDISH);
-                    int mealtimeIndex = cursor.getColumnIndex(DBHelper.KEY_MEALTIME);
-                    do {
-                        Log.d("mLog", "-------------------1--------------" + "ID = " + cursor.getInt(idIndex) +
-                                ", name of dish = " + cursor.getString(nameofdishIndex) +
-                                ", mealtime = " + cursor.getString(mealtimeIndex));
-                    } while (cursor.moveToNext());
-                } else
-                    Log.d("mLog", "0 rows");
-
-                cursor.close();
-
-                if (cursor2.moveToFirst()) {
-                    int idIndex2 = cursor2.getColumnIndex(DBHelper.KEY_ID2);
-                    int ingredient1Index = cursor2.getColumnIndex(DBHelper.KEY_INGREDIENT);
-                    int numberofdishIndex = cursor2.getColumnIndex(DBHelper.KEY_NUMBEROFDISH);
-                    do {
-                        Log.d(
-                                "mLog", "-------------------2--------------" +
-                                        "ID = " + cursor2.getInt(idIndex2) +
-                                        ", ingredients = " + cursor2.getString(ingredient1Index)
-                                        + ", number of dish = " + cursor2.getString(numberofdishIndex));
-                    } while (cursor2.moveToNext());
-                } else
-                    Log.d("mLog", "0 rows");
-
-                cursor2.close();
-
-                break;
-
 
             case R.id.btnDelete: // удаление какого-то конкретного блюда
                 if (nameofdish.equalsIgnoreCase("")) {
@@ -183,12 +141,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
                 startActivity(gotorecipe);
 
-                break;
-
-            case R.id.btnClear: //полное удаление данных из таблицы
-                database.delete(DBHelper.TABLE_MENU, null, null);
-                database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
-                //database.delete(DBHelper.TABLE_RECIPES, null, null);
                 break;
 
         }

@@ -2,7 +2,6 @@ package com.example.duska.food;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +14,7 @@ import android.widget.TextView;
 
 public class RecipeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btnRead, btnClear, btnAdd, btnMain;
+    Button btnRead, btnDelete, btnAdd, btnMain;
     TextView textView, text_of_recipe, name_of_dish;
     DBHelper dbHelper;
 
@@ -26,11 +25,11 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
 
         btnRead = (Button) findViewById(R.id.btnRead);
         btnAdd = (Button) findViewById(R.id.btnAdd);
-        btnClear = (Button) findViewById(R.id.btnClear);
+        btnDelete = (Button) findViewById(R.id.btnDelete);
         btnMain = (Button) findViewById(R.id.btnMain);
 
         btnAdd.setOnClickListener(this);
-        btnClear.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
         btnRead.setOnClickListener(this);
         btnMain.setOnClickListener(this);
 
@@ -95,38 +94,22 @@ public class RecipeActivity extends AppCompatActivity implements View.OnClickLis
                 contentValues.put(DBHelper.KEY_RECIPE, recipe);
 
                 database.insert(DBHelper.TABLE_RECIPES, null, contentValues);
-
                 break;
 
-            case R.id.btnRead: //чтение данных в log
-                Cursor cursor = database.query(DBHelper.TABLE_RECIPES, null, null, null, null, null, null);
 
-                if (cursor.moveToFirst()) {
-                    int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
-                    int nameofdishinrecipeIndex = cursor.getColumnIndex(DBHelper.KEY_NAMEOFDISHINRECIPE);
-                    int recipeIndex = cursor.getColumnIndex(DBHelper.KEY_RECIPE);
-                    do {
-                        Log.d("mLog", "-------------------3--------------" + "ID = " + cursor.getInt(idIndex) +
-                                ", name of dish in recipe = " + cursor.getString(nameofdishinrecipeIndex) +
-                                ", recipe = " + cursor.getString(recipeIndex));
-                    } while (cursor.moveToNext());
-                } else
-                    Log.d("mLog","0 rows");
+            case R.id.btnDelete: // удаление какого-то конкретного блюда
+                if (nameofdishinrecipe.equalsIgnoreCase("")) {
+                    break;
+                }
+                int updCount = database.delete(DBHelper.TABLE_MENU, DBHelper.KEY_NAMEOFDISH + " = ? ", new String[]{nameofdishinrecipe});
+                int updCount2 = database.delete(DBHelper.TABLE_LISTOFPRODUCTS, DBHelper.KEY_NUMBEROFDISH + " = ?", new String[]{nameofdishinrecipe});
+                Log.d("mLog", "deleted rows count = " + updCount);
+                Log.d("mLog", "deleted rows count = " + updCount2);
 
-                cursor.close();
-
-                break;
-
-            case R.id.btnClear: //удаление данных из всей таблицы
-               // database.delete(DBHelper.TABLE_MENU, null, null);
-               // database.delete(DBHelper.TABLE_LISTOFPRODUCTS, null, null);
-                database.delete(DBHelper.TABLE_RECIPES, null, null);
-                break;
-
-            case R.id.btnMain: //кнопка перехода в главную забивку таблицы
-                Intent gotomain = new Intent();
-                gotomain.setClass(RecipeActivity.this, MainActivity.class);
-                startActivity(gotomain);
+                case R.id.btnMain:
+                    Intent gotomain = new Intent();
+                    gotomain.setClass(RecipeActivity.this, MainActivity.class);
+                    startActivity(gotomain);
 
 
         }

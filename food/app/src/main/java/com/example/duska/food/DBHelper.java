@@ -20,6 +20,7 @@ public class DBHelper  extends SQLiteOpenHelper{
     public static final String KEY_NAMEOFDISH = "nameofdish";
     public static final String KEY_MEALTIME = "mealtime";
     public static final String KEY_NUMBEROFRECIPE = "numberofrecipe";
+   // public static final String KEY_CATEGORY = "category";
 
             //the second table
     public static final String KEY_ID2 = "_id";
@@ -41,7 +42,7 @@ public class DBHelper  extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL("create table " + TABLE_MENU + "(" + KEY_ID
-                + " integer primary key," + KEY_NAMEOFDISH + " text," + KEY_MEALTIME + " text" + KEY_NUMBEROFRECIPE + " text" + ")"); //CREATE THE FIRST TABLE
+                + " integer primary key," + KEY_NAMEOFDISH + " text," + KEY_MEALTIME + " text" + KEY_NUMBEROFRECIPE + " text"  + ")"); //CREATE THE FIRST TABLE
 
         db.execSQL("create table " + TABLE_LISTOFPRODUCTS + "(" + KEY_ID2
                 + " integer primary key," + KEY_INGREDIENT + " text," + KEY_NUMBEROFDISH + " text" + ")"); //CREATE THE FIRST TABLE

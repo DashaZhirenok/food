@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class HomeActivity extends AppCompatActivity {
 
     TextView textView;
-    Button btn_help, btn_show, btn_addNew;
+    Button btn_help, btn_show, btn_addNew, btn_Setings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,12 @@ public class HomeActivity extends AppCompatActivity {
         btn_help = (Button) findViewById(R.id.btn_help);
         btn_addNew = (Button) findViewById(R.id.btn_addNew);
         btn_show = (Button) findViewById(R.id.btn_show);
+        btn_Setings = (Button) findViewById(R.id.btn_Settings);
 
         btn_addNew.setOnClickListener(OncAll);
         btn_show.setOnClickListener(OncAll);
         btn_help.setOnClickListener(OncAll);
+        btn_Setings.setOnClickListener(OncAll);
 
     }
 
@@ -50,6 +52,11 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(gotoadd);
 
                     break;
+
+                case (R.id.btn_Settings):
+                    Intent gotosettings = new Intent();
+                    gotosettings.setClass(HomeActivity.this, SettingsActivity.class);
+                    startActivity(gotosettings);
             }
 
         }

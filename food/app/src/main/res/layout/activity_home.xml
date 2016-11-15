@@ -49,4 +49,13 @@
         android:textSize="55dp"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/btn_show" />
+
+    <Button
+        android:layout_width="80dp"
+        android:layout_height="50dp"
+        android:id="@+id/btn_Settings"
+        android:background="@color/color_button"
+        android:drawableTop="@drawable/ic_settings"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
