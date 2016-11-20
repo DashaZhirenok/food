@@ -12,9 +12,9 @@ import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class ShowActivity extends AppCompatActivity implements View.OnClickListener{
+public class ShowRecipeActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button show,next;
+    Button show,back;
     TextView textmenu, textshow;
     DBHelper dbHelper;
     ScrollView scrollView;
@@ -22,16 +22,17 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show);
+        setContentView(R.layout.activity_show_recipe);
 
         textmenu = (TextView) findViewById(R.id.textmenu);
         textshow = (TextView) findViewById(R.id.textshow);
         show = (Button) findViewById(R.id.show);
-        next = (Button) findViewById(R.id.next);
+        back = (Button) findViewById(R.id.back);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
+        back.setOnClickListener(OncBack);
+
         show.setOnClickListener(this);
-        next.setOnClickListener(OncNext);
 
         dbHelper = new DBHelper(this);
 
@@ -54,18 +55,18 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         {
             case R.id.menu_add:
                 Intent gotoadd = new Intent();
-                gotoadd.setClass(ShowActivity.this, MainActivity.class);
+                gotoadd.setClass(ShowRecipeActivity.this, MainActivity.class);
                 startActivity(gotoadd);
                 break;
             case R.id.menu_home:
                 Intent gotohome = new Intent();
-                gotohome.setClass(ShowActivity.this, HomeActivity.class);
+                gotohome.setClass(ShowRecipeActivity.this, HomeActivity.class);
                 startActivity(gotohome);
                 break;
 
             case R.id.help:
                 Intent gotohelp = new Intent();
-                gotohelp.setClass(ShowActivity.this, HelpActivity.class);
+                gotohelp.setClass(ShowRecipeActivity.this, HelpActivity.class);
                 startActivity(gotohelp);
                 break;
         }
@@ -74,12 +75,14 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    View.OnClickListener OncNext = new View.OnClickListener() {
+
+
+    View.OnClickListener OncBack = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent gotonext = new Intent();
-            gotonext.setClass(ShowActivity.this, ShowRecipeActivity.class);
-            startActivity(gotonext);
+            Intent gotoback = new Intent();
+            gotoback.setClass(ShowRecipeActivity.this, ShowActivity.class);
+            startActivity(gotoback);
         }
     };
 
@@ -89,32 +92,25 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         SQLiteDatabase database = dbHelper.getWritableDatabase();
 
         // Делаем запрос
-        Cursor cursor3 = database.query(DBHelper.TABLE_MENU, null, null, null, null, null, null);
+        Cursor cursor3 = database.query(DBHelper.TABLE_RECIPES, null, null, null, null, null, null);
         try {
-           //  textmenu.setText("List of menu\n");
-            /// textmenu.append(DBHelper.KEY_NAMEOFDISH + ", " +
-               //      DBHelper.KEY_MEALTIME + ", " +
-                 //    DBHelper.KEY_CATEGORY + "\n");
 
             // Узнаем индекс каждого столбца
-            int idColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_ID);
-            int MealtimeColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_NAMEOFDISH);
-            int NameofdishColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_MEALTIME);
-            int CategoryColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_CATEGORY);
+            int idColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_ID3);
+            int nameofdishinrecipeColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_NAMEOFDISHINRECIPE);
+            int recipeColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_RECIPE);
 
             // Проходим через все ряды
             while (cursor3.moveToNext()) {
                 // Используем индекс для получения строки или числа
                 int currentID = cursor3.getInt(idColumnIndex);
-                String currentNameofdish = cursor3.getString(NameofdishColumnIndex);
-                String currentMealtime = cursor3.getString(MealtimeColumnIndex);
-                String currentCategory = cursor3.getString(CategoryColumnIndex);
+                String currentNameofdishinrecipe = cursor3.getString(nameofdishinrecipeColumnIndex);
+                String currentRecipe = cursor3.getString(recipeColumnIndex);
 
                 // Выводим значения каждого столбца
                 textshow.append(("\n" + currentID + ": " +
-                        currentNameofdish + " (" +
-                        currentMealtime + ", " +
-                        currentCategory + "). "));
+                        currentNameofdishinrecipe + " (" +
+                        currentRecipe + "). "));
             }
         }
         finally {
@@ -125,9 +121,3 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 }
-
-
-
-
-
-

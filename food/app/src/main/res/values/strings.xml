@@ -8,4 +8,7 @@
     <string name="help">Help</string>
     <string name="menu_home">Home</string>
 
+    <string name="settings_read">If you want to READ IN LOG, click this button</string>
+    <string name="settings_clearAll">If you want to CLEAR ALL, click this button</string>
+
 </resources>

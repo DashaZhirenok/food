@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<TableLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -25,16 +25,16 @@
         android:background="#d7003735"
         android:layout_gravity="center_horizontal" />
 
-    <EditText
-        android:id="@+id/etNameofdish"
-        android:hint="Name of dish"
-        android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_ettext"
-        android:textSize="24dp">
-    </EditText>
+        <EditText
+            android:id="@+id/etNameofdish"
+            android:hint="Name of dish"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp">
+        </EditText>
 
     <EditText
         android:id="@+id/etMealtime"
@@ -47,62 +47,147 @@
         android:textSize="24dp">
     </EditText>
 
-    <!-- вторая таблица -->
+    <EditText
+        android:id="@+id/etCategory"
+        android:hint="Category"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="10dp"
+        android:background="@color/color_ettext"
+        android:textSize="24dp">
+    </EditText>
 
+    <!-- вторая таблица -->
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <EditText
         android:id="@+id/etIngredients1"
         android:hint="Ingredients"
-        android:layout_width="match_parent"
+        android:layout_width="259dp"
         android:layout_height="32dp"
         android:textColor="#ffffff"
         android:layout_marginTop="10dp"
         android:background="@color/color_ettext"
         android:textSize="24dp">
     </EditText>
-
     <EditText
-        android:id="@+id/etIngredients2"
-        android:hint="Ingredients"
-        android:layout_width="match_parent"
+        android:id="@+id/etPrice1"
+        android:layout_width="100dp"
         android:layout_height="32dp"
         android:textColor="#ffffff"
+        android:hint="price"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:background="@color/color_ettext"
-        android:textSize="24dp">
-    </EditText>
+        android:textSize="24dp"
+        android:layout_column="47" />
+    </TableRow>
 
-    <EditText
-        android:id="@+id/etIngredients3"
-        android:hint="Ingredients"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_ettext"
-        android:textSize="24dp">
-    </EditText>
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/etIngredients2"
+            android:hint="Ingredients"
+            android:layout_width="259dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp">
+        </EditText>
+        <EditText
+            android:id="@+id/etPrice2"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:hint="price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp"
+            android:layout_column="47" />
+    </TableRow>
 
-    <EditText
-        android:id="@+id/etIngredients4"
-        android:hint="Ingredients"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_ettext"
-        android:textSize="24dp">
-    </EditText>
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/etIngredients3"
+            android:hint="Ingredients"
+            android:layout_width="259dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp">
+        </EditText>
+        <EditText
+            android:id="@+id/etPrice3"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:hint="price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp"
+            android:layout_column="47" />
+    </TableRow>
 
-    <EditText
-        android:id="@+id/etIngredients5"
-        android:hint="Ingredients"
+    <TableRow
         android:layout_width="match_parent"
-        android:layout_height="32dp"
-        android:textColor="#ffffff"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_ettext"
-        android:textSize="24dp">
-    </EditText>
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/etIngredients4"
+            android:hint="Ingredients"
+            android:layout_width="259dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp">
+        </EditText>
+        <EditText
+            android:id="@+id/etPrice4"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:hint="price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp"
+            android:layout_column="47" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:id="@+id/etIngredients5"
+            android:hint="Ingredients"
+            android:layout_width="259dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp">
+        </EditText>
+        <EditText
+            android:id="@+id/etPrice5"
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:textColor="#ffffff"
+            android:hint="price"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/color_ettext"
+            android:textSize="24dp"
+            android:layout_column="47" />
+    </TableRow>
 
 
     <RelativeLayout
@@ -135,10 +220,12 @@
             android:background="@color/color_button"
             android:textColor="#ffffff"
             android:textSize="24dp"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@+id/btnDelete"
             android:layout_alignParentEnd="true" />
 
 
     </RelativeLayout>
 
-</LinearLayout>
+</TableLayout>

@@ -14,8 +14,9 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnAdd, btnRead, btnClear, btnDelete, btnRecipe;
+    Button btnAdd, btnDelete, btnRecipe;
     EditText etNameofdish, etMealtime, etCategory, etIngredients1, etIngredients2, etIngredients3, etIngredients4, etIngredients5;
+    EditText etPrice1, etPrice2, etPrice3, etPrice4, etPrice5;
     DBHelper dbHelper;
 
     @Override
@@ -35,6 +36,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         etNameofdish = (EditText) findViewById(R.id.etNameofdish);
         etMealtime = (EditText) findViewById(R.id.etMealtime);
+        etCategory = (EditText) findViewById(R.id.etCategory);
+        etPrice1 = (EditText) findViewById(R.id.etPrice1);
+        etPrice2 = (EditText) findViewById(R.id.etPrice2);
+        etPrice3 = (EditText) findViewById(R.id.etPrice3);
+        etPrice4 = (EditText) findViewById(R.id.etPrice4);
+        etPrice5 = (EditText) findViewById(R.id.etPrice5);
         etIngredients1 =(EditText) findViewById(R.id.etIngredients1);
         etIngredients2 =(EditText) findViewById(R.id.etIngredients2);
         etIngredients3 =(EditText) findViewById(R.id.etIngredients3);
@@ -86,10 +93,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-  //      String category = etCategory.getText().toString();
+
         String nameofdish = etNameofdish.getText().toString();
         String mealtime = etMealtime.getText().toString();
+        String category = etCategory.getText().toString();
         String ingredients1 = etIngredients1.getText().toString();
+        String price1 = etPrice1.getText().toString();
+        String price2 = etPrice2.getText().toString();
+        String price3 = etPrice3.getText().toString();
+        String price4 = etPrice4.getText().toString();
+        String price5 = etPrice5.getText().toString();
         String ingredients2 = etIngredients2.getText().toString();
         String ingredients3 = etIngredients3.getText().toString();
         String ingredients4 = etIngredients4.getText().toString();
@@ -106,21 +119,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnAdd: //добавление данных в таблицу
                 contentValues.put(DBHelper.KEY_NAMEOFDISH, nameofdish);
                 contentValues.put(DBHelper.KEY_MEALTIME, mealtime);
-        //        contentValues.put(DBHelper.KEY_CATEGORY, category);
+                contentValues.put(DBHelper.KEY_CATEGORY, category);
                 contentValues2.put(DBHelper.KEY_NUMBEROFDISH, nameofdish);
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients1);
+                contentValues2.put(DBHelper.KEY_PRICE, price1);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
 
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients2);
+                contentValues2.put(DBHelper.KEY_PRICE, price2);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
 
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients3);
+                contentValues2.put(DBHelper.KEY_PRICE, price3);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
 
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients4);
+                contentValues2.put(DBHelper.KEY_PRICE, price4);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
 
                 contentValues2.put(DBHelper.KEY_INGREDIENT, ingredients5);
+                contentValues2.put(DBHelper.KEY_PRICE, price5);
                 database.insert(DBHelper.TABLE_MENU, null, contentValues);
                 database.insert(DBHelper.TABLE_LISTOFPRODUCTS, null, contentValues2);
 
