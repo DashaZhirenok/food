@@ -1,8 +1,8 @@
 package com.example.duska.food;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,22 +27,11 @@ public class HelpActivity extends AppCompatActivity {
 
         switch (id)
         {
-            case R.id.menu_add:
-                Intent gotoadd = new Intent();
-                gotoadd.setClass(HelpActivity.this, MainActivity.class);
-                startActivity(gotoadd);
-                break;
 
             case R.id.menu_home:
                 Intent gotohome = new Intent();
                 gotohome.setClass(HelpActivity.this, HomeActivity.class);
                 startActivity(gotohome);
-                break;
-
-            case R.id.menu_show:
-                Intent gotoshow = new Intent();
-                gotoshow.setClass(HelpActivity.this, ShowActivity.class);
-                startActivity(gotoshow);
                 break;
 
         }

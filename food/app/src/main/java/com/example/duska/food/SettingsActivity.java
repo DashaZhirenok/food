@@ -1,12 +1,16 @@
 package com.example.duska.food;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -28,6 +32,41 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         dbHelper = new DBHelper(this);
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        getMenuInflater().inflate(R.menu.menu2, menu);
+        return true;
+    };
+
+
+    @Override //действия при нажатии на пункты меню
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+
+        switch (id)
+        {
+
+            case R.id.menu_home:
+                Intent gotohome = new Intent();
+                gotohome.setClass(SettingsActivity.this, HomeActivity.class);
+                startActivity(gotohome);
+                break;
+
+            case R.id.help:
+                Toast.makeText(getApplicationContext(),
+                        "Please, scroll left or right",
+                        Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onClick(View v) {

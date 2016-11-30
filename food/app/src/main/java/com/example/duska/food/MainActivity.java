@@ -4,58 +4,93 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    Button btnAdd, btnDelete, btnRecipe;
+    Button btnAdd, btnDelete, btnAdd2, btnDelete2;
     EditText etNameofdish, etMealtime, etCategory, etIngredients1, etIngredients2, etIngredients3, etIngredients4, etIngredients5;
     EditText etPrice1, etPrice2, etPrice3, etPrice4, etPrice5;
+    TextView textView, text_of_recipe, name_of_dish;
     DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        btnAdd = (Button) findViewById(R.id.btnAdd);
+        LayoutInflater inflater = LayoutInflater.from(this);
+        List<View> pages = new ArrayList<View>();
+        View page = inflater.inflate(R.layout.activity_main, null);
+
+        btnAdd = (Button) page.findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
 
-        btnRecipe = (Button) findViewById(R.id.btnRecipe);
-        btnRecipe.setOnClickListener(this);
-
-        btnDelete = (Button) findViewById(R.id.btnDelete);
+        btnDelete = (Button) page.findViewById(R.id.btnDelete);
         btnDelete.setOnClickListener(this);
 
 
-        etNameofdish = (EditText) findViewById(R.id.etNameofdish);
-        etMealtime = (EditText) findViewById(R.id.etMealtime);
-        etCategory = (EditText) findViewById(R.id.etCategory);
-        etPrice1 = (EditText) findViewById(R.id.etPrice1);
-        etPrice2 = (EditText) findViewById(R.id.etPrice2);
-        etPrice3 = (EditText) findViewById(R.id.etPrice3);
-        etPrice4 = (EditText) findViewById(R.id.etPrice4);
-        etPrice5 = (EditText) findViewById(R.id.etPrice5);
-        etIngredients1 =(EditText) findViewById(R.id.etIngredients1);
-        etIngredients2 =(EditText) findViewById(R.id.etIngredients2);
-        etIngredients3 =(EditText) findViewById(R.id.etIngredients3);
-        etIngredients4 =(EditText) findViewById(R.id.etIngredients4);
-        etIngredients5 =(EditText) findViewById(R.id.etIngredients5);
+        etNameofdish = (EditText) page.findViewById(R.id.etNameofdish);
+        etMealtime = (EditText) page.findViewById(R.id.etMealtime);
+        etCategory = (EditText) page.findViewById(R.id.etCategory);
+        etPrice1 = (EditText) page.findViewById(R.id.etPrice1);
+        etPrice2 = (EditText) page.findViewById(R.id.etPrice2);
+        etPrice3 = (EditText) page.findViewById(R.id.etPrice3);
+        etPrice4 = (EditText) page.findViewById(R.id.etPrice4);
+        etPrice5 = (EditText) page.findViewById(R.id.etPrice5);
+        etIngredients1 =(EditText) page.findViewById(R.id.etIngredients1);
+        etIngredients2 =(EditText) page.findViewById(R.id.etIngredients2);
+        etIngredients3 =(EditText) page.findViewById(R.id.etIngredients3);
+        etIngredients4 =(EditText) page.findViewById(R.id.etIngredients4);
+        etIngredients5 =(EditText) page.findViewById(R.id.etIngredients5);
 
         dbHelper = new DBHelper(this);
 
+        pages.add(page);
+
+        //the second page
+        page = inflater.inflate(R.layout.activity_recipe, null);
+
+
+        text_of_recipe = (TextView) page.findViewById(R.id.text_of_recipe);
+        textView = (TextView) page.findViewById(R.id.textView);
+        name_of_dish = (TextView) page.findViewById(R.id.name_of_dish);
+
+        btnAdd2 = (Button) page.findViewById(R.id.btnAdd2);
+        btnDelete2 = (Button) page.findViewById(R.id.btnDelete2);
+        btnAdd2.setOnClickListener(OncAll);
+        btnDelete2.setOnClickListener(OncAll);
+        dbHelper = new DBHelper(this);
+
+        pages.add(page);
+
+
+        SamplePagerAdapter pagerAdapter = new SamplePagerAdapter(pages);
+        ViewPager viewPager = new ViewPager(this);
+        viewPager.setAdapter(pagerAdapter);
+        viewPager.setCurrentItem(1);
+
+        setContentView(viewPager);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.menu2, menu);
         return true;
     };
 
@@ -67,11 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (id)
         {
-            case R.id.menu_show:
-                Intent gotoshow = new Intent();
-                gotoshow.setClass(MainActivity.this, ShowActivity.class);
-                startActivity(gotoshow);
-                break;
+
             case R.id.menu_home:
                 Intent gotohome = new Intent();
                 gotohome.setClass(MainActivity.this, HomeActivity.class);
@@ -79,15 +110,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.help:
-                Intent gotohelp = new Intent();
-                gotohelp.setClass(MainActivity.this, HelpActivity.class);
-                startActivity(gotohelp);
+                Toast.makeText(getApplicationContext(),
+                        "Please, scroll left or right",
+                        Toast.LENGTH_SHORT).show();
+
                 break;
         }
 
 
         return super.onOptionsItemSelected(item);
     }
+
 
 
     @Override
@@ -146,6 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             case R.id.btnDelete: // удаление какого-то конкретного блюда
+            {
                 if (nameofdish.equalsIgnoreCase("")) {
                     break;
                 }
@@ -153,17 +187,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 int updCount2 = database.delete(DBHelper.TABLE_LISTOFPRODUCTS, DBHelper.KEY_NUMBEROFDISH + " = ?", new String[]{nameofdish});
                 Log.d("mLog", "deleted rows count = " + updCount);
                 Log.d("mLog", "deleted rows count = " + updCount2);
-
-            case R.id.btnRecipe: //переход в заполнение рецептов
-                Intent gotorecipe = new Intent();
-                gotorecipe.setClass(MainActivity.this, RecipeActivity.class);
-                startActivity(gotorecipe);
-
-                break;
+            }
 
         }
         dbHelper.close();
     }
-}
+
+    View.OnClickListener OncAll = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            String nameofdishinrecipe = name_of_dish.getText().toString();
+            String recipe = text_of_recipe.getText().toString();
+
+            SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+            ContentValues contentValues = new ContentValues();
+
+
+            switch (v.getId()) {
+
+                case R.id.btnAdd2: //добавление данных в таблицу RECIPE
+                    contentValues.put(DBHelper.KEY_NAMEOFDISHINRECIPE, nameofdishinrecipe);
+                    contentValues.put(DBHelper.KEY_RECIPE, recipe);
+
+                    database.insert(DBHelper.TABLE_RECIPES, null, contentValues);
+                    break;
+
+
+                case R.id.btnDelete: // удаление какого-то конкретного блюда
+                    if (nameofdishinrecipe.equalsIgnoreCase("")) {
+                        break;
+                    }
+                    int updCount = database.delete(DBHelper.TABLE_MENU, DBHelper.KEY_NAMEOFDISH + " = ? ", new String[]{nameofdishinrecipe});
+                    int updCount2 = database.delete(DBHelper.TABLE_LISTOFPRODUCTS, DBHelper.KEY_NUMBEROFDISH + " = ?", new String[]{nameofdishinrecipe});
+                    Log.d("mLog", "deleted rows count = " + updCount);
+                    Log.d("mLog", "deleted rows count = " + updCount2);
+
+
+
+            }
+            dbHelper.close();
+        }
+        };
+
+    }
+
+
+
+
 
 

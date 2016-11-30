@@ -15,17 +15,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeActivity" >
+        <activity android:name=".MainActivity" >
         </activity>
         <activity android:name=".HelpActivity" >
-        </activity>
-        <activity android:name=".MainActivity" >
         </activity>
         <activity android:name=".ShowActivity" >
         </activity>
         <activity android:name=".SettingsActivity" >
         </activity>
         <activity android:name=".ShowRecipeActivity" >
+        </activity>
+        <activity android:name=".ViewPagerSampleActivity" >
         </activity>
     </application>
 

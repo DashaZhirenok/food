@@ -11,6 +11,7 @@
     android:background="@drawable/food44"
     android:weightSum="1">
 
+
     <!-- первая таблица -->
     <TextView
         android:layout_width="match_parent"
@@ -207,22 +208,9 @@
             android:layout_width="110dp"
             android:layout_height="45dp"
             android:id="@+id/btnDelete"
-            android:layout_alignTop="@+id/btnAdd"
             android:drawableTop="@drawable/ic_clear"
-            android:layout_alignParentEnd="true"
-            android:background="@color/color_button" />
-
-        <Button
-            android:layout_width="110dp"
-            android:layout_height="45dp"
-            android:text="NEXT"
-            android:id="@+id/btnRecipe"
             android:background="@color/color_button"
-            android:textColor="#ffffff"
-            android:textSize="24dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_above="@+id/btnDelete"
+            android:layout_alignTop="@+id/btnAdd"
             android:layout_alignParentEnd="true" />
 
 

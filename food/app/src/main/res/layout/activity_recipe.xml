@@ -11,6 +11,7 @@
     tools:context="com.example.duska.food.RecipeActivity">
 
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,27 +27,18 @@
     <Button
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:id="@+id/btnAdd"
+        android:id="@+id/btnAdd2"
         android:drawableTop="@drawable/ic_add"
         android:background="@color/color_button"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/text_of_recipe" />
-
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:id="@+id/btnRead"
-        android:background="@color/color_button"
-        android:layout_alignBottom="@+id/btnMain"
-        android:layout_alignEnd="@+id/text_of_recipe"
-        android:text="READ" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="260dp"
         android:id="@+id/text_of_recipe"
         android:background="@color/color_ettext"
-        android:text="Text of recipe..."
+        android:hint="Text of recipe..."
         android:textSize="20dp"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff"
@@ -62,7 +54,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:background="@color/color_ettext"
-        android:text="Please, type &quot;Name of dish&quot;"
+        android:hint="Please, type &quot;Name of dish&quot;"
         android:textSize="26dp"
         android:layout_marginTop="10dp"
         android:textColor="#ffffff" />
@@ -70,22 +62,10 @@
     <Button
         android:layout_width="110dp"
         android:layout_height="45dp"
-        android:text="BACK"
-        android:id="@+id/btnMain"
-        android:textColor="#ffffff"
-        android:background="@color/color_button"
-        android:layout_below="@+id/text_of_recipe"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp"
-        android:textSize="26dp" />
-
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:id="@+id/btnDelete"
+        android:id="@+id/btnDelete2"
         android:drawableTop="@drawable/ic_clear"
-        android:layout_alignTop="@+id/btnAdd"
-        android:layout_alignEnd="@+id/btnRead"
-        android:background="@color/color_button" />
+        android:layout_alignTop="@+id/btnAdd2"
+        android:background="@color/color_button"
+        android:layout_alignEnd="@+id/text_of_recipe" />
 
 </RelativeLayout>
