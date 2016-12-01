@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -31,9 +32,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         LayoutInflater inflater = LayoutInflater.from(this);
         List<View> pages = new ArrayList<View>();
-        View page = inflater.inflate(R.layout.activity_main, null);
+        View page = inflater.inflate(R.layout.activity_recipe, null);
+
+        Toolbar mActionBarToolbar = (Toolbar) page.findViewById(R.id.toolbar);
+        setSupportActionBar(mActionBarToolbar);
+        text_of_recipe = (TextView) page.findViewById(R.id.text_of_recipe);
+        textView = (TextView) page.findViewById(R.id.textView);
+        name_of_dish = (TextView) page.findViewById(R.id.name_of_dish);
+
+
+        btnAdd2 = (Button) page.findViewById(R.id.btnAdd2);
+        btnDelete2 = (Button) page.findViewById(R.id.btnDelete2);
+        btnAdd2.setOnClickListener(OncAll);
+        btnDelete2.setOnClickListener(OncAll);
+        dbHelper = new DBHelper(this);
+
+        pages.add(page);
+
+        //the second page
+        page = inflater.inflate(R.layout.activity_main, null);
+        Toolbar mActionBarToolbar2 = (Toolbar) page.findViewById(R.id.toolbar);
+        setSupportActionBar(mActionBarToolbar2);
+
 
         btnAdd = (Button) page.findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
@@ -58,21 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         dbHelper = new DBHelper(this);
 
-        pages.add(page);
-
-        //the second page
-        page = inflater.inflate(R.layout.activity_recipe, null);
-
-
-        text_of_recipe = (TextView) page.findViewById(R.id.text_of_recipe);
-        textView = (TextView) page.findViewById(R.id.textView);
-        name_of_dish = (TextView) page.findViewById(R.id.name_of_dish);
-
-        btnAdd2 = (Button) page.findViewById(R.id.btnAdd2);
-        btnDelete2 = (Button) page.findViewById(R.id.btnDelete2);
-        btnAdd2.setOnClickListener(OncAll);
-        btnDelete2.setOnClickListener(OncAll);
-        dbHelper = new DBHelper(this);
 
         pages.add(page);
 
@@ -94,9 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     };
 
-
-    @Override //действия при нажатии на пункты меню
-
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
 
@@ -108,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 gotohome.setClass(MainActivity.this, HomeActivity.class);
                 startActivity(gotohome);
                 break;
-
             case R.id.help:
                 Toast.makeText(getApplicationContext(),
                         "Please, scroll left or right",
@@ -118,8 +122,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
+
+
         return super.onOptionsItemSelected(item);
-    }
+
+}
+
 
 
 

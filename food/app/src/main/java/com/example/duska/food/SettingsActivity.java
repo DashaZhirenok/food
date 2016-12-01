@@ -5,23 +5,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_readLog, btn_deleteAll;
     DBHelper dbHelper;
+    TextView tw;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        Toolbar mActionBarToolbar2 = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mActionBarToolbar2);
 
         btn_readLog = (Button) findViewById(R.id.btn_readLog);
         btn_readLog.setOnClickListener(this);
@@ -31,12 +35,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         dbHelper = new DBHelper(this);
 
+       // tw=(TextView)findViewById(R.id.textViewPage);
+        //tw.setText("Settings");
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        getMenuInflater().inflate(R.menu.menu2, menu);
+        getMenuInflater().inflate(R.menu.menu_help, menu);
         return true;
     };
 
@@ -45,6 +53,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     public boolean onOptionsItemSelected(MenuItem item){
         int id = item.getItemId();
+
 
         switch (id)
         {
@@ -55,12 +64,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(gotohome);
                 break;
 
-            case R.id.help:
-                Toast.makeText(getApplicationContext(),
-                        "Please, scroll left or right",
-                        Toast.LENGTH_SHORT).show();
-
-                break;
         }
 
 

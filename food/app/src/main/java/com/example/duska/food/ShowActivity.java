@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +33,25 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
         List<View> pages = new ArrayList<View>();
 
         //the first page
-        View page = inflater.inflate(R.layout.activity_show, null);
+
+        View page = inflater.inflate(R.layout.activity_show_recipe, null);
+        Toolbar mActionBarToolbar2 = (Toolbar) page.findViewById(R.id.toolbar);
+        setSupportActionBar(mActionBarToolbar2);
+        show2 = (Button) page.findViewById(R.id.show2);
+        textmenu2 = (TextView) page.findViewById(R.id.textmenu2);
+        textshow2 = (TextView) page.findViewById(R.id.textshow2);
+
+        show2.setOnClickListener(OncShowrecipe);
+        dbHelper = new DBHelper(this);
+
+        pages.add(page);
+
+
+          //the second page
+
+        page = inflater.inflate(R.layout.activity_show, null);
+        Toolbar mActionBarToolbar = (Toolbar) page.findViewById(R.id.toolbar);
+        setSupportActionBar(mActionBarToolbar);
         textmenu = (TextView) page.findViewById(R.id.textmenu);
         textshow = (TextView) page.findViewById(R.id.textshow);
         show = (Button) page.findViewById(R.id.show);
@@ -40,17 +59,6 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
         show.setOnClickListener(this);
 
-        dbHelper = new DBHelper(this);
-        pages.add(page);
-
-
-          //the second page
-        page = inflater.inflate(R.layout.activity_show_recipe, null);
-        show2 = (Button) page.findViewById(R.id.show2);
-        textmenu2 = (TextView) page.findViewById(R.id.textmenu2);
-        textshow2 = (TextView) page.findViewById(R.id.textshow2);
-
-        show2.setOnClickListener(OncShowrecipe);
         dbHelper = new DBHelper(this);
 
         pages.add(page);
@@ -107,6 +115,7 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
         // Делаем запрос
         Cursor cursor3 = database.query(DBHelper.TABLE_MENU, null, null, null, null, null, null);
+        Cursor cursor4 = database.query(DBHelper.TABLE_LISTOFPRODUCTS, null,null, null, null, null,null);
         try {
            //  textmenu.setText("List of menu\n");
             /// textmenu.append(DBHelper.KEY_NAMEOFDISH + ", " +
@@ -115,28 +124,55 @@ public class ShowActivity extends AppCompatActivity implements View.OnClickListe
 
             // Узнаем индекс каждого столбца
             int idColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_ID);
-            int MealtimeColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_NAMEOFDISH);
-            int NameofdishColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_MEALTIME);
+            int id2ColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_ID2);
+            int IngredientColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_INGREDIENT);
+            int Ingredient2ColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_INGREDIENT);
+            int Ingredient3ColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_INGREDIENT);
+            int Ingredient4ColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_INGREDIENT);
+            int Ingredient5ColumnIndex = cursor4.getColumnIndex(DBHelper.KEY_INGREDIENT);
+            int MealtimeColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_MEALTIME);
+            int NameofdishColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_NAMEOFDISH);
             int CategoryColumnIndex = cursor3.getColumnIndex(DBHelper.KEY_CATEGORY);
 
             // Проходим через все ряды
-            while (cursor3.moveToNext()) {
+            while (cursor3.moveToNext() && cursor4.moveToNext()) {
                 // Используем индекс для получения строки или числа
+                int currentID2 = cursor4.getInt(id2ColumnIndex);
                 int currentID = cursor3.getInt(idColumnIndex);
                 String currentNameofdish = cursor3.getString(NameofdishColumnIndex);
                 String currentMealtime = cursor3.getString(MealtimeColumnIndex);
                 String currentCategory = cursor3.getString(CategoryColumnIndex);
+                String currentIngredient = cursor4.getString(IngredientColumnIndex);
+                cursor4.moveToNext();
+                String currentIngredient2 = cursor4.getString(Ingredient2ColumnIndex);
+                cursor4.moveToNext();
+                String currentIngredient3 = cursor4.getString(Ingredient3ColumnIndex);
+                cursor4.moveToNext();
+                String currentIngredient4 = cursor4.getString(Ingredient4ColumnIndex);
+                cursor4.moveToNext();
+                String currentIngredient5 = cursor4.getString(Ingredient5ColumnIndex);
 
                 // Выводим значения каждого столбца
                 textshow.append(("\n" + currentID + ": " +
                         currentNameofdish + " (" +
                         currentMealtime + ", " +
                         currentCategory + "). "));
+                textshow.append(("\n"  + "Ingredients: " +
+                        currentIngredient + "\n"));
+
+                textshow.append((currentIngredient2 + "\n"));
+                textshow.append((currentIngredient3 + "\n"));
+                textshow.append((currentIngredient4 + "\n"));
+                textshow.append((currentIngredient5 + "\n"));
+
+                textshow.append(("\n"));
+
             }
         }
         finally {
             // Всегда закрываем курсор после чтения
             cursor3.close();
+            cursor4.close();
         }
 
     }

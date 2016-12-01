@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    xmlns:yourapp="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/help"
-        app:showAsAction="ifRoom"
+        yourapp:showAsAction="ifRoom"
         android:icon="@drawable/ic_help"
         android:title="@string/help">
     </item>
     <item
         android:id="@+id/menu_home"
-        app:showAsAction="ifRoom"
+        yourapp:showAsAction="ifRoom"
         android:icon="@drawable/ic_menu_home"
         android:title="@string/menu_home">
     </item>

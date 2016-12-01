@@ -43,12 +43,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Что приготовим сегодня?"
         android:id="@+id/textView"
-        android:layout_marginTop="67dp"
         android:background="@color/color_button"
         android:textColor="#ffffff"
         android:textSize="55dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btn_show" />
+        android:layout_below="@+id/btn_Settings"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="98dp" />
 
     <Button
         android:layout_width="80dp"
