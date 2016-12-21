@@ -1,16 +1,15 @@
 package com.example.duska.food;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
-    TextView textView;
-    Button btn_help, btn_show, btn_addNew, btn_Setings;
+
+    Button btn_help, btn_show, btn_addNew, btn_Settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,12 +19,12 @@ public class HomeActivity extends AppCompatActivity {
         btn_help = (Button) findViewById(R.id.btn_help);
         btn_addNew = (Button) findViewById(R.id.btn_addNew);
         btn_show = (Button) findViewById(R.id.btn_show);
-        btn_Setings = (Button) findViewById(R.id.btn_Settings);
+        btn_Settings = (Button) findViewById(R.id.btn_Settings);
 
         btn_addNew.setOnClickListener(OncAll);
         btn_show.setOnClickListener(OncAll);
         btn_help.setOnClickListener(OncAll);
-        btn_Setings.setOnClickListener(OncAll);
+        btn_Settings.setOnClickListener(OncAll);
 
     }
 

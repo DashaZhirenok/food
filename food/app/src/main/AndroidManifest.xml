@@ -23,10 +23,6 @@
         </activity>
         <activity android:name=".SettingsActivity" >
         </activity>
-        <activity android:name=".ShowRecipeActivity" >
-        </activity>
-        <activity android:name=".ViewPagerSampleActivity" >
-        </activity>
     </application>
 
 </manifest>

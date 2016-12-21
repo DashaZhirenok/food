@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
        android:orientation="vertical">
-       <include layout="@layout/toolbar" />
+
 
     <TextView
         android:layout_width="match_parent"
@@ -37,18 +37,42 @@
             android:layout_alignParentStart="true"
             android:layout_marginTop="10dp" />
 
-<TableRow>
+<RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_button" />
 
     <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:text="show"
+        android:layout_width="60dp"
+        android:layout_height="55dp"
         android:id="@+id/show"
-        android:background="@color/color_button"
+        android:background="#00ffffff"
+        android:drawableStart="@drawable/ic_show"
         android:textSize="24dp"
         android:textColor="#ffffff"
-        android:layout_column="10" />
+        android:layout_column="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="35dp" />
 
-</TableRow>
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="55dp"
+        android:id="@+id/btn_help"
+        android:background="#00ffffff"
+        android:drawableEnd="@drawable/ic_help"
+        android:textSize="24dp"
+        android:textColor="#ffffff"
+        android:layout_column="10"
+        android:layout_marginEnd="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+
+</RelativeLayout>
    </TableLayout>
 </ScrollView>

@@ -10,5 +10,6 @@
 
     <string name="settings_read">If you want to READ IN LOG, click this button</string>
     <string name="settings_clearAll">If you want to CLEAR ALL, click this button</string>
+    <string name="settings_xml">If you want read in XML, click this button</string>
 
 </resources>

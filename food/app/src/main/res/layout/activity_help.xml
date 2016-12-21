@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/food44"
     tools:context="com.example.duska.food.HelpActivity">
-    <include layout="@layout/toolbar" />
 
 
 </RelativeLayout>

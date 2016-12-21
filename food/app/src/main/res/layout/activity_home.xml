@@ -2,38 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.duska.food.HomeActivity"
     android:background="@drawable/food44"
     android:focusableInTouchMode="false">
 
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:drawableTop="@drawable/ic_help"
-        android:id="@+id/btn_help"
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:background="#ac007f7b" />
-
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:drawableTop="@drawable/ic_add"
-        android:id="@+id/btn_addNew"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/color_button" />
-
-    <Button
-        android:layout_width="110dp"
-        android:layout_height="45dp"
-        android:id="@+id/btn_show"
+        android:layout_alignTop="@+id/btn_addNew"
+        android:layout_alignParentStart="true"
         android:background="@color/color_button"
-        android:drawableTop="@drawable/ic_show"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:drawableEnd="@drawable/ic_help"
+        android:id="@+id/btn_help"
+        android:background="#00007f7b"
+        android:allowUndo="false"
+        android:layout_marginEnd="34dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="55dp"
+        android:drawableStart="@drawable/ic_add"
+        android:id="@+id/btn_addNew"
+        android:nestedScrollingEnabled="false"
+        android:background="#00ffffff"
+        android:layout_marginStart="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/btn_show" />
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="60dp"
+        android:id="@+id/btn_show"
+        android:background="#00ffffff"
+        android:drawableStart="@drawable/ic_show"
+        android:layout_marginStart="33dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
 
@@ -45,17 +56,20 @@
         android:id="@+id/textView"
         android:background="@color/color_button"
         android:textColor="#ffffff"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:textSize="55dp"
-        android:layout_below="@+id/btn_Settings"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="98dp" />
+        android:layout_marginTop="132dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
-        android:layout_width="80dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="60dp"
         android:id="@+id/btn_Settings"
-        android:background="@color/color_button"
-        android:drawableTop="@drawable/ic_settings"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:background="#00ffffff"
+        android:drawableEnd="@drawable/ic_settings"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_toEndOf="@+id/btn_addNew"
+        android:layout_marginStart="52dp" />
+
 </RelativeLayout>
